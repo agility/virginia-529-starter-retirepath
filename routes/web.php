@@ -24,6 +24,7 @@ $agilityConfig = Agility\Client\Configuration::getDefaultConfiguration()->setApi
 $apiSitemap = new Agility\Client\Api\SitemapApi(new GuzzleHttp\Client(), $agilityConfig);
 $apiPage = new Agility\Client\Api\PageApi(new GuzzleHttp\Client(), $agilityConfig);
 
+//get the pages in the sitemap...
 $sitemapFlat = $apiSitemap->getSitemapFlat($guid, $apitype, $locale, "website");
 
 Config::set('agilityConfig', $agilityConfig);
@@ -50,6 +51,7 @@ foreach ($sitemapFlat as $i => $value) {
         $apitype = Config::get('apitype');
         $locale = Config::get('locale');
 
+        //get the actual page object for this route
         $agilityPage = $apiPage->getPage($guid, $apitype, $locale, $pageID);
 
         return view(
