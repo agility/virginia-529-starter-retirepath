@@ -17,18 +17,30 @@ $currentPath= Route::getFacadeRoot()->current()->uri(); -->
 </head>
 
 <body class="antialiased">
+
+
+
     <div className="flex flex-col min-h-screen">
 
+        @include("partials.header", ['siteHeader' => $siteHeader])
 
-        <!-- Loop the zones -->
-        @foreach($agilityPage->zones as $zoneName => $zone)
-        <!-- Loop the modules -->
-        @foreach($zone as $module)
-        <!-- output the module in a partial blade -->
-        @include("partials.$module->module", ["module" => $module->item])
+        <main>
 
-        @endforeach
-        @endforeach
+            <!-- Loop the zones -->
+            @foreach($agilityPage->zones as $zoneName => $zone)
+            <!-- Loop the modules -->
+            @foreach($zone as $module)
+            <!-- output the module in a partial blade -->
+            @if ($module->item !== null)
+            @include("partials.$module->module", ["module" => $module->item])
+            @endif
+
+            @endforeach
+            @endforeach
+
+        </main>
+
+
     </div>
 
     @include("partials.footer")

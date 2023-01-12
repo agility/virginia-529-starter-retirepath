@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agility/agility-content-fetch-sdk-php.git",
-                "reference": "bde554a9a67dfa24ecf5dca34b41373234d1a6fe"
+                "reference": "68e6ff6f75c25d41463546b94e79a8d5148416f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agility/agility-content-fetch-sdk-php/zipball/bde554a9a67dfa24ecf5dca34b41373234d1a6fe",
-                "reference": "bde554a9a67dfa24ecf5dca34b41373234d1a6fe",
+                "url": "https://api.github.com/repos/agility/agility-content-fetch-sdk-php/zipball/68e6ff6f75c25d41463546b94e79a8d5148416f2",
+                "reference": "68e6ff6f75c25d41463546b94e79a8d5148416f2",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "issues": "https://github.com/agility/agility-content-fetch-sdk-php/issues",
                 "source": "https://github.com/agility/agility-content-fetch-sdk-php/tree/main"
             },
-            "time": "2023-01-11T19:52:55+00:00"
+            "time": "2023-01-12T13:47:18+00:00"
         },
         {
             "name": "brick/math",
