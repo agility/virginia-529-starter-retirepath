@@ -39,10 +39,17 @@ Route::get('/', function (AgilityService $agilityService) {
 //catchall route...
 Route::get('/{any}', function ($any, Request $request, AgilityService $agilityService) {
 
+
     //get the actual page object for this route
     $pageProps = $agilityService->getPageProps($any);
+
+    if ($pageProps === null) {
+        return null;
+    }
+
     $siteHeader = $agilityService->getSiteHeader();
     $dynamicPageItem = $agilityService->getDynamicPageItem($any);
+
     return view(
         'agility',
         [
