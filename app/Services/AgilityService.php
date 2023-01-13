@@ -30,10 +30,16 @@ class AgilityService
 	public function __construct()
 	{
 
-		$this->apiKey = $_ENV["AGILITY_API_PREVIEW_KEY"];
+
 		$this->guid = $_ENV["AGILITY_GUID"];
-		$this->apitype = "preview"; //or fetch for live content...
+
+		$this->apitype = $_ENV["AGILITY_API_MODE"]; //or fetch for live content...
 		$this->locale = "en-us";
+		if ($this->apitype === "preview") {
+			$this->apiKey = $_ENV["AGILITY_API_PREVIEW_KEY"];
+		} else {
+			$this->apiKey = $_ENV["AGILITY_API_FETCH_KEY"];
+		}
 
 		// Configure API key authorization: APIKeyAuthorization
 		$this->agilityConfig =  Configuration::getDefaultConfiguration()->setApiKey("APIKey", $this->apiKey);

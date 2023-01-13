@@ -30,6 +30,7 @@ Route::get('/', function (AgilityService $agilityService) {
             'path' => "/",
             'agilityPage' => $pageProps["agilityPage"],
             'sitemapNode' => $pageProps["sitemapNode"],
+            'dynamicPageItem' => null,
             'siteHeader' => $siteHeader
         ]
     );
