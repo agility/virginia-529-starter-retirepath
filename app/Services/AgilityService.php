@@ -8,8 +8,6 @@ use GuzzleHttp;
 
 class AgilityService
 {
-	const MINIMUM_QUANTITY = 1;
-
 
 	protected $apiKey;
 	protected $guid;
@@ -46,13 +44,11 @@ class AgilityService
 	}
 
 
-	/**
-	 * Returns some content
-	 *
-	 */
-	public function getContentList($referenceName)
+
+	public function getContentList($referenceName, $take = null, $skip = null, $filter = null, $fields = null, $sort = null, $direction = null, $contentLinkDepth = null, $expandAllContentLinks = null )
 	{
-		return $this->apiContentList->getContentList($this->guid, $this->apitype, $this->locale, $referenceName);
+
+		return $this->apiContentList->getContentList($this->guid, $this->apitype, $this->locale, $referenceName, $fields, $take, $skip, $filter, $sort, $direction, $contentLinkDepth, $expandAllContentLinks );
 	}
 
 	public function getSitemapFlat()
@@ -81,6 +77,21 @@ class AgilityService
 	}
 
 
+	public function getPageProps($path)
+	{
+
+		$sitemap = $this->getSitemapFlat();
+		$node = $sitemap["/$path"];
+
+		$pageID = $node->pageID;
+
+		$agilityPage = $this->apiPage->getPage($this->guid, $this->apitype, $this->locale, $pageID, 3);
+
+		return  [
+				'agilityPage' => $agilityPage,
+				'sitemapNode' => $node
+		];
+	}
 
 	public function getDynamicPageItem($path)
 	{

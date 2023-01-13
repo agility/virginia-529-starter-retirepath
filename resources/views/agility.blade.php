@@ -10,15 +10,13 @@ $currentPath= Route::getFacadeRoot()->current()->uri(); -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ $agilityPage->title  }} | Laravel + Agility</title>
+    <title>{{ $sitemapNode->title  }} | Laravel + Agility</title>
 
     @vite('resources/css/app.css')
 
 </head>
 
 <body class="antialiased">
-
-
 
     <div className="flex flex-col min-h-screen">
 
@@ -28,16 +26,18 @@ $currentPath= Route::getFacadeRoot()->current()->uri(); -->
 
             <!-- Loop the zones -->
             @foreach($agilityPage->zones as $zoneName => $zone)
+
             <!-- Loop the modules -->
             @foreach($zone as $module)
+
             <!-- output the module in a partial blade -->
             @if ($module->item !== null)
             @include("partials.$module->module", ["module" => $module->item, "dynamicPageItem" => $dynamicPageItem])
             @endif
 
             @endforeach
-            @endforeach
 
+            @endforeach
         </main>
 
 

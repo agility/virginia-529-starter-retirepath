@@ -21,37 +21,36 @@ use App\Services\AgilityService;
 Route::get('/', function (AgilityService $agilityService) {
 
     //get the actual page object for this route
-    $agilityPage = $agilityService->getPage("home");
+    $pageProps = $agilityService->getPageProps("home");
     $siteHeader = $agilityService->getSiteHeader();
 
     return view(
         'agility',
         [
             'path' => "/",
-            'agilityPage' => $agilityPage,
+            'agilityPage' => $pageProps["agilityPage"],
+            'sitemapNode' => $pageProps["sitemapNode"],
             'siteHeader' => $siteHeader
         ]
     );
-
 });
 
 //catchall route...
 Route::get('/{any}', function ($any, Request $request, AgilityService $agilityService) {
 
     //get the actual page object for this route
-    $agilityPage = $agilityService->getPage($any);
+    $pageProps = $agilityService->getPageProps($any);
     $siteHeader = $agilityService->getSiteHeader();
     $dynamicPageItem = $agilityService->getDynamicPageItem($any);
-
     return view(
         'agility',
         [
             'path' => $any,
-            'agilityPage' => $agilityPage,
-            'siteHeader' => $siteHeader,
-            'dynamicPageItem' => $dynamicPageItem
+            'agilityPage' => $pageProps["agilityPage"],
+            'sitemapNode' => $pageProps["sitemapNode"],
+            'dynamicPageItem' => $dynamicPageItem,
+            'siteHeader' => $siteHeader
         ]
     );
 
 })->where('any', '.*');
-
