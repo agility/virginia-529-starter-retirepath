@@ -4,10 +4,8 @@
 			<div class="lg:w-0 lg:flex-1">
 
 				<a href="/" class="flex items-center">
-					<img class="h-14 sm:h-20 w-auto " src="{{$siteHeader["item"]->fields->logo->url}}" alt="{{$siteHeader["item"]->fields->logo->label}}" />
-					<p class="font-bold text-xl text-secondary-500 ml-3 mt-2">
-						{{$siteHeader["item"]->fields->siteName}}
-					</p>
+					<img class="h-14 sm:h-12 w-auto " src="{{$siteHeader["item"]->fields->logo->url}}" alt="{{$siteHeader["item"]->fields->logo->label}}" />
+
 				</a>
 			</div>
 
