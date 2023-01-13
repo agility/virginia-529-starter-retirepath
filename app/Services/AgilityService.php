@@ -77,10 +77,30 @@ class AgilityService
 
 		$pageID = $node->pageID;
 
-		return  $this->apiPage->getPage($this->guid, $this->apitype, $this->locale, $pageID);
+		return  $this->apiPage->getPage($this->guid, $this->apitype, $this->locale, $pageID, 3);
 	}
 
 
+
+	public function getDynamicPageItem($path)
+	{
+
+		$sitemap = $this->getSitemapFlat();
+		$node = $sitemap["/$path"];
+
+		$contentID = 0;
+
+		if (property_exists($node, 'contentID')) {
+			$contentID = $node->contentID;
+		}
+
+		if ($contentID > 0) {
+			return  $this->apiContentItem->getContentItem($this->guid, $this->apitype, $this->locale, $contentID);
+		} else {
+			return null;
+		}
+
+	}
 
 	/**
 	 * Get the site header content that we need for this site
@@ -100,7 +120,7 @@ class AgilityService
 
 			if ($node->visible->menu == 1) {
 				array_push($links, [
-					"title" => $node->title,
+					"title" => $node->menuText,
 					"path" => $node->path,
 				]);
 			}

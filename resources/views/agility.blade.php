@@ -32,7 +32,7 @@ $currentPath= Route::getFacadeRoot()->current()->uri(); -->
             @foreach($zone as $module)
             <!-- output the module in a partial blade -->
             @if ($module->item !== null)
-            @include("partials.$module->module", ["module" => $module->item])
+            @include("partials.$module->module", ["module" => $module->item, "dynamicPageItem" => $dynamicPageItem])
             @endif
 
             @endforeach

@@ -41,13 +41,15 @@ Route::get('/{any}', function ($any, Request $request, AgilityService $agilitySe
     //get the actual page object for this route
     $agilityPage = $agilityService->getPage($any);
     $siteHeader = $agilityService->getSiteHeader();
+    $dynamicPageItem = $agilityService->getDynamicPageItem($any);
 
     return view(
         'agility',
         [
             'path' => $any,
             'agilityPage' => $agilityPage,
-            'siteHeader' => $siteHeader
+            'siteHeader' => $siteHeader,
+            'dynamicPageItem' => $dynamicPageItem
         ]
     );
 
