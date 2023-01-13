@@ -18,8 +18,4 @@ This is an example of how to use Agility CMS with Laravel.  This is the standard
 
 - The `app\resources\views\partial` folder has all of the views for each module, as well as the header and footer.
 
-## Learn More
-Interested in learning more about Agility?
-
-[Contact us](https://agilitycms.com/contact-us/request-a-demo) to get a demo.
 
