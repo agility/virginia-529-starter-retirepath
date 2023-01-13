@@ -1,7 +1,7 @@
 @inject('agilityService', 'App\Services\AgilityService')
 
 @php
-
+//secondary data access
 $posts = $agilityService->getContentList("posts", 10, 0);
 $sitemapFlat = $agilityService->getSitemapFlat();
 
